@@ -6,10 +6,10 @@
 /*   By: mmatei <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 20:23:20 by mmatei            #+#    #+#             */
-/*   Updated: 2015/11/24 21:37:23 by mmatei           ###   ########.fr       */
+/*   Updated: 2015/11/25 16:51:48 by mmatei           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+/*un Makefile + validari */
 #include "lib.h"
 
 typedef struct	student
@@ -39,12 +39,16 @@ int			main()
 {
 	FILE			*fp;
 	char			buff[255];
-	student_info	
+	student_info	stud_vector[100];
+	int 			i;
 
+	i = -1;
 	fp = fopen("students.csv", "r");
 	while (fscanf(fp, "%s", buff) > 0)
 	{
-		place_words(buff);
+		i++;
+		stud_vector[i] = place_words(buff);
 	}
+	check_students_Cluj();
 	return (0);
 }
