@@ -6,7 +6,7 @@
 /*   By: mmatei <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 20:23:20 by mmatei            #+#    #+#             */
-/*   Updated: 2015/12/04 12:48:51 by mmatei           ###   ########.fr       */
+/*   Updated: 2015/12/04 13:27:09 by mmatei           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*un Makefile + validari */
@@ -31,15 +31,18 @@ int			main()
 	FILE			*fp;
 	char			buff[255];
 	student_info	stud_vector[100];
-	int 			i;
+	int 			stud_nr;
 
-	i = -1;
+	stud_nr = -1;
 	fp = fopen("students.csv", "r");
 	while (fscanf(fp, "%s", buff) > 0)
 	{
-		i++;
-		stud_vector[i] = place_words(buff);
+		if (info_validation(buff) == 1)
+		{
+			stud_nr++;
+			stud_vector[stud_nr] = place_words(buff);
+		}
 	}
 	check_students_Cluj();
 	return (0);
-}
+ }

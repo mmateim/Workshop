@@ -20,6 +20,6 @@ char	*ft_strcat(char *s1, const char *s2);
 size_t	ft_strlen(const char *s);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	**ft_strsplit(char const *s, char c);
-
+int		info_validation(char *s);
 
 #endif
