@@ -6,13 +6,13 @@
 /*   By: mmatei <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/10 15:37:32 by mmatei            #+#    #+#             */
-/*   Updated: 2015/11/24 21:06:14 by mmatei           ###   ########.fr       */
+/*   Updated: 2015/12/04 14:26:02 by mmatei           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 
-static int		nr_of_w(char const *s, char c)
+int				nr_of_words(char const *s, char c)
 {
 	int i;
 	int nr;
@@ -45,7 +45,7 @@ static char		**ft_split2(char const *s, char c, int i, int j)
 	int		end;
 	char	*h;
 
-	p = (char**)malloc(sizeof(char*) * (nr_of_w(s, c) + 1));
+	p = (char**)malloc(sizeof(char*) * (nr_of_words(s, c) + 1));
 	start = 0;
 	h = ft_strjoin(s, f_mkstring(c));
 	end = 0;

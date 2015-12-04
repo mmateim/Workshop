@@ -6,7 +6,7 @@
 /*   By: mmatei <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 20:23:20 by mmatei            #+#    #+#             */
-/*   Updated: 2015/12/04 13:53:45 by mmatei           ###   ########.fr       */
+/*   Updated: 2015/12/04 14:29:51 by mmatei           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*un Makefile + validari */
@@ -32,16 +32,21 @@ int				main()
 	char			buff[255];
 	student_info	stud_vector[100];
 	int 			stud_nr;
+	int				line_nr;
 
-	stud_nr = -1;
+	stud_nr = 0;
+	line_nr = 0;
 	fp = fopen("students.csv", "r");
 	while (fscanf(fp, "%s", buff) > 0)
 	{
-		//if (info_validation(buff) == 1)
-		//{
-			stud_nr++;
+		line_nr ++;
+		if (buff_validation(buff, ';') == 1)
+		{
 			stud_vector[stud_nr] = place_words(buff);
-		//}
+			stud_nr++;
+		}
+		else
+			printf("\nline %d has a wrong nr of columns\n", line_nr);
 	}
 	//check_students_Cluj();
 	print_stud_info(stud_vector, stud_nr);
