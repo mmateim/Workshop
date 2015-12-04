@@ -6,20 +6,11 @@
 /*   By: mmatei <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 20:23:20 by mmatei            #+#    #+#             */
-/*   Updated: 2015/11/25 16:51:48 by mmatei           ###   ########.fr       */
+/*   Updated: 2015/12/04 12:48:51 by mmatei           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*un Makefile + validari */
 #include "lib.h"
-
-typedef struct	student
-{
-	char		first_name[40];
-	char		last_name[40];
-	char		mail[30];
-	char		grade[6];
-	char		county[20];
-}				student_info;
 
 elev_info	*place_words(char *s)
 {
