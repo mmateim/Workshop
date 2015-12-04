@@ -14,6 +14,8 @@ typedef struct  student
 	char        county[20];
 }               student_info;
 
+char	*ft_strtrim(char const *s);
+char	*string_tolower(char *s);
 int		nr_of_words(char const *s, char c);
 void	ft_strcpy(char *dst, char *src);
 char	*ft_strnew(size_t size);
