@@ -33,7 +33,75 @@ int				main()
 	student_info	stud_vector[100];
 	int 			stud_nr;
 	int				line_nr;
+	fd=open("cars.txt.txt",O_RDONLY);
 
+	char buff[2];
+
+	char v[100];
+
+	v[0]='\0';
+
+	int i=0;
+
+	int nr=0;
+
+	while(r = (read(fd,buff,1)))
+
+	{
+
+		buff[r]='\0';
+
+		if(buff[0]=='\n')
+
+		{
+
+			if(i==0)
+
+				strcpy(v_cars[nr].brand,v);
+
+			if(i==1)
+
+				strcpy(v_cars[nr].owner,v);
+
+			if(i==2)
+
+				strcpy(v_cars[nr].color,v);
+
+			if(i==3)
+
+			{
+
+				strcpy(v_cars[nr].number,v);
+
+				nr++;
+
+			}
+
+			i=(i+1)%4;
+
+			v[0]='\0';
+
+		}
+
+		else
+
+		{
+
+			strcat(v,buff);
+
+		}
+
+	}
+
+	if(strlen(v) != 0)
+
+	{
+
+		strcpy(v_cars[nr].number,v);
+
+		nr++;
+
+	}
 	stud_nr = 0;
 	line_nr = 0;
 	fp = fopen("students.csv", "r");
@@ -52,4 +120,4 @@ int				main()
 	//check_students_Cluj();
 	print_stud_info(stud_vector, stud_nr);
 	return (0);
- }
+}
