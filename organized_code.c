@@ -28,22 +28,24 @@ student_info	place_words(char *s)
 
 int				main()
 {
-	FILE			*fp;
-	char			buff[255];
+	//FILE			*fp;
+	//char			buff[255];
 	student_info	stud_vector[100];
-	int 			stud_nr;
-	int				line_nr;
-	fd=open("cars.txt.txt",O_RDONLY);
+	//int 			stud_nr;
+	//int				line_nr;
+	
+	int fd;
+	fd=open("students.csv",O_RDONLY);
 
 	char buff[2];
 
-	char v[100];
+	char v_aux[100];
 
-	v[0]='\0';
+	v_aux[0]='\0';
 
-	int i=0;
-
-	int nr=0;
+	int i = 0;
+	int r = 0;
+	int nr = 0;
 
 	while(r = (read(fd,buff,1)))
 
@@ -51,35 +53,35 @@ int				main()
 
 		buff[r]='\0';
 
-		if(buff[0]=='\n')
+		if(buff[0]==';')
 
 		{
 
 			if(i==0)
 
-				strcpy(v_cars[nr].brand,v);
+				strcpy(stud_vector[nr].first_name,v_aux);
 
 			if(i==1)
 
-				strcpy(v_cars[nr].owner,v);
+				strcpy(stud_vector[nr].last_name,v_aux);
 
 			if(i==2)
 
-				strcpy(v_cars[nr].color,v);
+				strcpy(stud_vector[nr].mail,v_aux);
 
 			if(i==3)
 
+				strcpy(stud_vector[nr].grade,v_aux);
+
+			if(i==4)
 			{
-
-				strcpy(v_cars[nr].number,v);
-
+				ft_strcpy(stud_vector[nr].county, v_aux);
 				nr++;
-
 			}
 
-			i=(i+1)%4;
+			i=(i+1)%5;
 
-			v[0]='\0';
+			v_aux[0]='\0';
 
 		}
 
@@ -87,21 +89,22 @@ int				main()
 
 		{
 
-			strcat(v,buff);
+			ft_strcat(v_aux,buff);
 
 		}
 
 	}
 
-	if(strlen(v) != 0)
+	if(ft_strlen(v_aux) != 0)
 
 	{
 
-		strcpy(v_cars[nr].number,v);
+		strcpy(stud_vector[nr].county,v_aux);
 
 		nr++;
 
 	}
+/*
 	stud_nr = 0;
 	line_nr = 0;
 	fp = fopen("students.csv", "r");
@@ -118,6 +121,7 @@ int				main()
 			printf("\nline %d has a wrong nr of columns\n", line_nr);
 	}
 	//check_students_Cluj();
-	print_stud_info(stud_vector, stud_nr);
+	*/
+	print_stud_info(stud_vector, nr);
 	return (0);
 }

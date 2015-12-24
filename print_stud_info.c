@@ -19,7 +19,7 @@ void	print_stud_info(student_info *v, int s_nr)
 	i = 0;
 	while (i < s_nr)
 	{
-		printf("%s   %s   %s   %s   %s\n",v[i].first_name, v[i].last_name, v[i].grade, v[i].mail, v[i].county);
+		printf("%s   %s   %s   %s   %s\n\n\n",v[i].first_name, v[i].last_name, v[i].grade, v[i].mail, v[i].county);
 		i++;
 	}
 }
