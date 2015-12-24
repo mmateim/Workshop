@@ -24,38 +24,31 @@ student_info	place_words(char *s)
 	ft_strcpy(current_stud.grade, ft_strtrim(words_matrix[3]));
 	ft_strcpy(current_stud.county, ft_strtrim(words_matrix[4]));
 	return (current_stud);
-}
+}//not used
 
 int				main()
 {
-	//FILE			*fp;
-	//char			buff[255];
 	student_info	stud_vector[100];
-	//int 			stud_nr;
-	//int				line_nr;
-	
 	int fd;
-	fd=open("students.csv",O_RDONLY);
-
 	char buff[2];
-
 	char v_aux[100];
-
 	v_aux[0]='\0';
 
 	int i = 0;
 	int r = 0;
 	int nr = 0;
 
+	fd = open("students.csv",O_RDONLY);
 	while(r = (read(fd,buff,1)))
 
 	{
 
 		buff[r]='\0';
 
-		if(buff[0]==';')
+		if((buff[0]==';' || buff[0] == '\n') && v_aux[0] != '\0' )
 
 		{
+printf("%d  %d %s\n",i,nr,v_aux);
 
 			if(i==0)
 
@@ -89,7 +82,9 @@ int				main()
 
 		{
 
-			ft_strcat(v_aux,buff);
+printf("---%s\n",buff);
+			if(buff[0] != ' ' && buff[0] != ';')
+				ft_strcat(v_aux,buff);
 
 		}
 
@@ -104,24 +99,7 @@ int				main()
 		nr++;
 
 	}
-/*
-	stud_nr = 0;
-	line_nr = 0;
-	fp = fopen("students.csv", "r");
-	while (fscanf(fp, "%s", buff) > 0)
-	{
-		printf("\n\n%s\n",buff);
-		line_nr ++;
-		if (buff_validation(buff, ';') == 1)
-		{
-			stud_vector[stud_nr] = place_words(string_tolower(buff));
-			stud_nr++;
-		}
-		else
-			printf("\nline %d has a wrong nr of columns\n", line_nr);
-	}
 	//check_students_Cluj();
-	*/
 	print_stud_info(stud_vector, nr);
 	return (0);
 }
